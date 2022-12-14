@@ -17,4 +17,5 @@ mod local_system;
 fn main() {
     println!("Hello, world!");
     local_system::name();
+    local_system::info();
 }
