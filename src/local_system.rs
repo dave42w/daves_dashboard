@@ -12,9 +12,6 @@
 // You should have received a copy of the GNU General Public License along with Dave's Dashboard. 
 // If not, see <https://www.gnu.org/licenses/>.
 
-mod local_system;
-
-fn main() {
-    println!("Hello, world!");
-    local_system::name();
+pub fn name() {
+    println!("Dave's system!");
 }
