@@ -1,3 +1,5 @@
+use std::ops::Add;
+
 use axum::Json;
 use serde::Serialize;
 
@@ -38,8 +40,9 @@ pub async fn get_sys_info() -> String {
     //test();
     //sys_info.to_owned()
     sys_info();
-    sys_info_template();
-    "Hello World post from my own file".to_owned()
+    let s: String = sys_info_template().to_string();
+    let s = s.add("Hello World post from my own file");
+    s.to_owned()
 }
 
 pub async fn post_sys_info() -> String {
