@@ -12,10 +12,15 @@
 // You should have received a copy of the GNU General Public License along with Dave's Dashboard.
 // If not, see <https://www.gnu.org/licenses/>.
 
-mod local_system;
+//mod local_system;
+use daves_dashboard::run;
 
-fn main() {
-    println!("Hello, world!");
-    local_system::name();
-    local_system::info();
+#[tokio::main]
+async fn main() {
+    run().await
 }
+// fn main() {
+//     println!("Hello, world!");
+//     local_system::name();
+//     local_system::info();
+// }
