@@ -12,11 +12,10 @@ pub struct SysInfo {
     host_name: String
 }
 
-pub fn info_sys() -> Json<SysInfo> {
+pub fn sys_info_as_json() -> Json<SysInfo> {
     // Please note that we use "new_all" to ensure that all list of
     // components, network interfaces, disks and users are already
     // filled!
-
     let mut sys = System::new_all();
     // First we update all information of our `System` struct.
     sys.refresh_all();
@@ -30,12 +29,4 @@ pub fn info_sys() -> Json<SysInfo> {
     
     };
     Json(sysinfo)
-}
-
-pub async fn get_home() -> Json<SysInfo> {
-    info_sys()
-}
-
-pub async fn post_home() -> String {
-    "Hello World post from my own file".to_owned()
 }

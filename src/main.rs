@@ -12,9 +12,23 @@
 // You should have received a copy of the GNU General Public License along with Dave's Dashboard.
 // If not, see <https://www.gnu.org/licenses/>.
 
-use daves_dashboard::run;
+//use daves_dashboard::run;
+
+mod routes;
+mod controllers;
+mod views;
+mod models;
 
 #[tokio::main]
 async fn main() {
     run().await
+}
+
+pub async fn run() {
+    let app = routes::create_routes();
+
+    axum::Server::bind(&"127.0.0.1:3000".parse().unwrap())
+        .serve(app.into_make_service())
+        .await
+        .unwrap();
 }
