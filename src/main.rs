@@ -17,6 +17,7 @@
 mod routes;
 mod controllers;
 mod views;
+mod models;
 
 #[tokio::main]
 async fn main() {
