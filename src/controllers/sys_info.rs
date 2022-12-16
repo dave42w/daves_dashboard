@@ -35,8 +35,10 @@ pub fn sys_info() -> Json<SysInfo> {
     };
     Json(sysinfo)
 }
-
+// this should use the model to get the data as JSON, 
+// then pass the json data to the view and return the view string
 pub async fn get_sys_info() -> String {
+    
     //test();
     //sys_info.to_owned()
     sys_info();
