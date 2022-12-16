@@ -3,5 +3,5 @@
 //use serde::Serialize;
 
 pub fn sys_info_template() -> String {
-    "GET sysinfo view TEST Hello World !!post from my own file".to_owned()
+    " TEMPLATE ".to_owned()
 }

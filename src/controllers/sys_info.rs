@@ -41,7 +41,7 @@ pub async fn get_sys_info() -> String {
     //sys_info.to_owned()
     sys_info();
     let s: String = sys_info_template().to_string();
-    let s = s.add("Hello World post from my own file");
+    let s = s.add(" CONTROLLER ");
     s.to_owned()
 }
 
