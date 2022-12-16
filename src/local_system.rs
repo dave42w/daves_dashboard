@@ -12,10 +12,21 @@
 // You should have received a copy of the GNU General Public License along with Dave's Dashboard.
 // If not, see <https://www.gnu.org/licenses/>.
 
+use axum::Json;
+use serde::Serialize;
+
+
 use sysinfo::{NetworkExt, ProcessExt, System, SystemExt};
 // removed unused NetworksExt,
 
-pub fn info() {
+#[derive(Serialize)]
+pub struct SysInfo {
+    kernel_version: String,
+    os_version: String,
+    host_name: String
+}
+
+pub fn info_sys() -> Json<SysInfo> {
     // Please note that we use "new_all" to ensure that all list of
     // components, network interfaces, disks and users are already
     // filled!
@@ -24,51 +35,72 @@ pub fn info() {
     // First we update all information of our `System` struct.
     sys.refresh_all();
 
-    // We display all disks' information:
-    println!("=> disks:");
-    for disk in sys.disks() {
-        println!("{:?}", disk);
-    }
+    // system information to JSON
+    let sysinfo = SysInfo {
+        kernel_version: sys.name().to_owned(),
+        os_version: sys.kernel_version().to_owned(),
+        host_name: sys.host_name().to_owned()
+    
+    };
+    Json(sysinfo)
+}
+    
+pub fn info() {
+    // Please note that we use "new_all" to ensure that all list of
+    // components, network interfaces, disks and users are already
+    // filled!
 
-    // Network interfaces name, data received and data transmitted:
-    println!("=> networks:");
-    for (interface_name, data) in sys.networks() {
-        println!(
-            "{}: {}/{} B",
-            interface_name,
-            data.received(),
-            data.transmitted()
-        );
-    }
-
-    // Components temperature:
-    println!("=> components:");
-    for component in sys.components() {
-        println!("{:?}", component);
-    }
-
-    println!("=> system:");
-    // RAM and swap information:
-    println!("total memory: {} bytes", sys.total_memory());
-    println!("used memory : {} bytes", sys.used_memory());
-    println!("total swap  : {} bytes", sys.total_swap());
-    println!("used swap   : {} bytes", sys.used_swap());
-
-    // Display system information:
-    println!("System name:             {:?}", sys.name());
-    println!("System kernel version:   {:?}", sys.kernel_version());
-    println!("System OS version:       {:?}", sys.os_version());
-    println!("System host name:        {:?}", sys.host_name());
-
-    // Number of CPUs:
-    println!("NB CPUs: {}", sys.cpus().len());
-
-    // Display processes ID, name na disk usage:
-    for (pid, process) in sys.processes() {
-        println!("[{}] {} {:?}", pid, process.name(), process.disk_usage());
-    }
+    let mut sys = System::new_all();
+    // First we update all information of our `System` struct.
+    sys.refresh_all();
 }
 
-pub fn name() {
-    println!("Dave's system!");
-}
+
+//     // We display all disks' information:
+//     println!("=> disks:");
+//     for disk in sys.disks() {
+//         println!("{:?}", disk);
+//     }
+
+//     // Network interfaces name, data received and data transmitted:
+//     println!("=> networks:");
+//     for (interface_name, data) in sys.networks() {
+//         println!(
+//             "{}: {}/{} B",
+//             interface_name,
+//             data.received(),
+//             data.transmitted()
+//         );
+//     }
+
+//     // Components temperature:
+//     println!("=> components:");
+//     for component in sys.components() {
+//         println!("{:?}", component);
+//     }
+
+//     println!("=> system:");
+//     // RAM and swap information:
+//     println!("total memory: {} bytes", sys.total_memory());
+//     println!("used memory : {} bytes", sys.used_memory());
+//     println!("total swap  : {} bytes", sys.total_swap());
+//     println!("used swap   : {} bytes", sys.used_swap());
+
+//     // Display system information:
+//     println!("System name:             {:?}", sys.name());
+//     println!("System kernel version:   {:?}", sys.kernel_version());
+//     println!("System OS version:       {:?}", sys.os_version());
+//     println!("System host name:        {:?}", sys.host_name());
+
+//     // Number of CPUs:
+//     println!("NB CPUs: {}", sys.cpus().len());
+
+//     // Display processes ID, name na disk usage:
+//     for (pid, process) in sys.processes() {
+//         println!("[{}] {} {:?}", pid, process.name(), process.disk_usage());
+//     }
+// }
+
+//pub fn name() {
+//    println!("Dave's system!");
+//}
