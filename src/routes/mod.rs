@@ -4,7 +4,7 @@ use axum::{
     routing::{get, post},
     Router,
 };
-use self::home::{get_home, post_home};
+use home::{get_home, post_home};
 
 pub fn create_routes() -> Router {
     Router::new()
