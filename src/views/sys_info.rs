@@ -1,1 +1,0 @@
-// template logic for sys_view

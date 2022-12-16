@@ -4,6 +4,8 @@ use serde::Serialize;
 use sysinfo::{System, SystemExt};
 // removed unused NetworkExt, ProcessExt, NetworksExt,
 
+use crate::views::sys_info_view::sys_info_template;
+
 #[derive(Serialize)]
 pub struct SysInfo {
     system_name: String,
@@ -32,8 +34,12 @@ pub fn sys_info() -> Json<SysInfo> {
     Json(sysinfo)
 }
 
-pub async fn get_sys_info() -> Json<SysInfo> {
-    sys_info()
+pub async fn get_sys_info() -> String {
+    //test();
+    //sys_info.to_owned()
+    sys_info();
+    sys_info_template();
+    "Hello World post from my own file".to_owned()
 }
 
 pub async fn post_sys_info() -> String {
