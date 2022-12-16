@@ -1,6 +1,6 @@
-mod routes;
+mod controllers;
 
-use routes::create_routes;
+use controllers::create_routes;
 
 pub async fn run() {
     let app = create_routes();

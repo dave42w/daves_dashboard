@@ -12,7 +12,7 @@ pub struct SysInfo {
     host_name: String
 }
 
-pub fn info_sys() -> Json<SysInfo> {
+pub fn sys_info() -> Json<SysInfo> {
     // Please note that we use "new_all" to ensure that all list of
     // components, network interfaces, disks and users are already
     // filled!
@@ -32,10 +32,10 @@ pub fn info_sys() -> Json<SysInfo> {
     Json(sysinfo)
 }
 
-pub async fn get_home() -> Json<SysInfo> {
-    info_sys()
+pub async fn get_sys_info() -> Json<SysInfo> {
+    sys_info()
 }
 
-pub async fn post_home() -> String {
+pub async fn post_sys_info() -> String {
     "Hello World post from my own file".to_owned()
 }
