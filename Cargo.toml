@@ -18,7 +18,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Dave Warnock dwarnock@gmail.com"]
 license = "GPL3.0"
-repository = "GitHub daves_dashboard"
+repository = "https://github.com/dave42w/daves_dashboard/"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
