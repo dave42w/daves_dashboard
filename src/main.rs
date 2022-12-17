@@ -12,8 +12,6 @@
 // You should have received a copy of the GNU General Public License along with Dave's Dashboard.
 // If not, see <https://www.gnu.org/licenses/>.
 
-//use daves_dashboard::run;
-
 mod routes;
 mod controllers;
 mod views;
