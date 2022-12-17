@@ -24,7 +24,7 @@ repository = "GitHub daves_dashboard"
 
 [dependencies]
 axum = { version = "0.6.1", features = ["headers", "macros"] }
-handlebars = "4.3.5"
+handlebars = { version = "4.3.5", features = ["dir_source"] }
 serde = { version = "1.0.150", features = ["derive"] }
 sysinfo = "0.27.0"
 tokio = { version = "1.23.0", features = ["macros", "rt-multi-thread"] }

@@ -1,8 +1,9 @@
 use axum::Json;
-use serde::Serialize;
 
 use sysinfo::{System, SystemExt};
 // removed unused NetworkExt, ProcessExt, NetworksExt,
+
+use serde::Serialize;
 
 #[derive(Serialize)]
 pub struct SysInfo {
