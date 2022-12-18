@@ -14,14 +14,9 @@
 
 use axum::Json;
 use crate::models::sys_info_model::SysInfo;
-use handlebars::Handlebars;
+use crate::templates::get_templates;
 
-// TODO now use a template file
 pub fn sys_info_template(j: Json<SysInfo>) -> String {
-    let mut hbr = Handlebars::new();
-    let source = "system_name: {{system_name}}, kernel_version: {{kernel_version}}, os_version: {{os_version}}, host_name: {{host_name}}.".to_owned();
-    
-    // TODO use result properly
-    let _ = hbr.register_template_string("t1", source);
-    hbr.render("t1", &j.0).unwrap()
+    get_templates().render("sys_info.html", &j.0).unwrap()
+
 }

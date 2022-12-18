@@ -16,6 +16,7 @@ mod routes;
 mod controllers;
 mod views;
 mod models;
+mod templates;
 
 #[tokio::main]
 async fn main() {
@@ -24,9 +25,11 @@ async fn main() {
 
 pub async fn run() {
     let app = routes::create_routes();
-
+    
     axum::Server::bind(&"127.0.0.1:3000".parse().unwrap())
         .serve(app.into_make_service())
         .await
         .unwrap();
 }
+
+
